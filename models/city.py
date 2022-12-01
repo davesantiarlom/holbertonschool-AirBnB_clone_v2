@@ -18,4 +18,3 @@ class City(BaseModel, Base):
     # These two are no longer needed
     # state_id = ""
     # name = ""
-
