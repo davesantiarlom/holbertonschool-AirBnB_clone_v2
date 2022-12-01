@@ -30,4 +30,3 @@ class State(BaseModel, Base):
                     list_of_cities.append(city)
 
             return list_of_cities
-
