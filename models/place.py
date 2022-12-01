@@ -55,4 +55,3 @@ class Place(BaseModel, Base):
         reviews = getattr(obj.place_id, 'self.id')
         amenities = getattr(obj.amenity_ids, 'Amenity.id')
         amenities = self.amenity_ids.append(obj.id)
-
