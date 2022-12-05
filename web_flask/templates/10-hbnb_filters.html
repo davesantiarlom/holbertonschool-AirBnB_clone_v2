@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
+    <link rel="icon" href="../static/images/icon.png" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+	<div class="locations">
+	  <h3>States</h3>
+	  <h4>&nbsp;</h4>
+	  <div class="popover">
+	    <UL>
+            {% for x in state | sort(attribute='name') %}
+	      <LI>
+		<h2>{{ x.name }}</h2>
+		<UL>
+                {% for y in x.cities | sort(attribute='name') %}
+                  <LI>{{ y.name }}</LI>
+                {% endfor %}
+		</UL>
+	      </LI>
+            {% endfor %}
+	    </UL>
+	  </div>
+	</div>
+	<div class="amenities">
+	  <h3>Amenities</h3>
+	  <h4>&nbsp;</h4>
+	  <div class="popover">
+	    <UL>
+            {% for x in amenity | sort(attribute='name') %}
+              <LI>{{ x.name }}</LI>
+            {% endfor %}
+	    </UL>
+	  </div>
+	</div>
+	<button type="button">Search</button>
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
