@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
+    <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css">
+    <link rel="icon" href="../static/images/icon.png" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    {% autoescape false %}
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+	<div class="locations">
+	  <h3>States</h3>
+	  <h4>&nbsp;</h4>
+	  <div class="popover">
+	    <ul>
+            {% for x in state | sort(attribute='name') %}
+	      <li>
+		<h2>{{ x.name }}</h2>
+		<ul>
+                {% for y in x.cities | sort(attribute='name') %}
+		  <li>{{ y.name }}</li>
+                {% endfor %}
+		</ul>
+	      </li>
+            {% endfor %}
+	    </ul>
+	  </div>
+	</div>
+	<div class="amenities">
+	  <h3>Amenities</h3>
+	  <h4>&nbsp;</h4>
+	  <div class="popover">
+	    <ul>
+            {% for x in amenity | sort(attribute='name') %}
+	      <li>{{ x.name }}</li>
+            {% endfor %}
+	    </ul>
+	  </div>
+	</div>
+	<button type="button">Search</button>
+      </section>
+      <section class="places">
+	<h1>Places</h1>
+        {% for x in place | sort(attribute='name') %}
+	<article>
+	  <div class="title_box">
+	    <h2>{{ x.name }}</h2>
+	    <div class="price_by_night">${{ x.price_by_night }}</div>
+	  </div>
+	  <div class="information">
+	    <div class="max_guest">{{x.max_guest }} Guests</div>
+            <div class="number_rooms">{{ x.number_rooms }} Bedroom</div>
+            <div class="number_bathrooms">{{ x.number_bathrooms }} Bathroom</div>
+	  </div>
+	  <div class="user">
+            <b>Owner:</b> {{ x.users.first_name }} {{ x.users.last_name }}
+          </div>
+          <div class="description">
+            {{ x.description }}
+          </div>
+	</article>
+        {% endfor %}
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+  {% endautoescape %}
+</html>
